@@ -5,7 +5,8 @@ import java.util.*;
 import com.dhc.api.vo.boardVO;
 import com.dhc.api.vo.storeVO;
 
-public interface BoardService {
-	public List<boardVO> selectAll();
-	public void save(boardVO board);
+public interface StoreService {
+	public List<storeVO> selectAll();
+
+	public void save(storeVO board);
 }
