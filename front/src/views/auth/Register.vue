@@ -113,9 +113,21 @@
 <script>
 import github from "@/assets/img/github.svg";
 import google from "@/assets/img/google.svg";
+//import {useStore} from "vuex";
+//import {computed} from "vue";
 //import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import Api from "../../Api.js"
+//import Api from "../../Api.js"
 export default {
+  // setup(){
+  //   const store = useStore();
+  //   const counter = computed(()=>store.state.counter);
+  //   const test = computed(()=>store.getters);
+  //   const inc = () => store.commit("setCounter", counter.value+1);
+  //   return {
+  //     store,counter, test, inc
+  //   };
+
+  // },
   data() {
     return {
       github,
@@ -133,8 +145,14 @@ export default {
   },
   methods:{
     signup (){
-      Api.test();
-      Api.test222();
+      //Api.test;
+      //console.log(this.counter);
+      //this.test.gettest();
+      console.log(this.$store.state.counter);
+      this.$store.commit('addCounter');
+      console.log(this.$store.state.counter);
+      //console.log(this.getCounter);
+      //Api.test222();
       console.log("why");
       // createUserWithEmailAndPassword(getAuth(), this.email, this.password)
       //   .then((userCredential) => {
@@ -146,6 +164,11 @@ export default {
       //   .catch((error) => {
       //     console.log(error.message)
       //   });
+    },
+    computed:{
+      getCounter(){
+        this.$store.getters.getcounter;
+      }
     }
   }
 };
