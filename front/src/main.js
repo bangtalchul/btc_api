@@ -99,4 +99,4 @@ const router = createRouter({
   routes,
 });
 
-createApp(App).use(router, store).mount("#app");
+createApp(App).use(router).use(store).mount("#app");
