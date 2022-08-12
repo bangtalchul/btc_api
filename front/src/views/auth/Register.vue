@@ -8,7 +8,7 @@
           <div class="rounded-t mb-0 px-6 py-6">
             <div class="text-center mb-3">
               <h6 class="text-blueGray-500 text-sm font-bold">
-                Sign up with
+                SNS계정으로 가입하기
               </h6>
             </div>
             <div class="btn-wrapper text-center">

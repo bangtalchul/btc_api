@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import { createWebHistory, createRouter } from "vue-router";
 import { store } from "./store";
+import { axios } from "axios";
 // styles
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -26,7 +27,7 @@ import Maps from "@/views/admin/Maps.vue";
 
 import Login from "@/views/auth/Login.vue";
 import Register from "@/views/auth/Register.vue";
-
+import SNSAuth from "@/views/auth/SNSAuth.vue";
 // views without layouts
 
 import Landing from "@/views/Landing.vue";
@@ -77,6 +78,10 @@ const routes = [
         path: "/auth/register",
         component: Register,
       },
+      {
+        path: "/auth/SNSAuth",
+        component: SNSAuth,
+      },
     ],
   },
   {
@@ -99,4 +104,4 @@ const router = createRouter({
   routes,
 });
 
-createApp(App).use(router).use(store).mount("#app");
+createApp(App).use(router).use(store).use(axios).mount("#app");
