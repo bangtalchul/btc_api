@@ -1,5 +1,12 @@
 <template>
+
+<div>
+  <index-navbar />
+   <section
+      class="header relative pt-16 items-center flex h-screen max-h-860-px"
+    >
   <div class="container mx-auto px-4 h-full">
+      
     <div class="flex content-center items-center justify-center h-full">
       <div class="w-full lg:w-4/12 px-4">
         <div
@@ -104,10 +111,13 @@
       </div>
     </div>
   </div>
+   </section>
+</div>
 </template>
 <script>
 import github from "@/assets/img/github.svg";
 import google from "@/assets/img/google.svg";
+import IndexNavbar from "@/components/Navbars/IndexNavbar.vue";
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 export default {
   data() {
@@ -120,6 +130,9 @@ export default {
       token:'',
       user:'',
     };
+  },
+  components: {
+    IndexNavbar,
   },
   methods :{
    testfirebase: function(){

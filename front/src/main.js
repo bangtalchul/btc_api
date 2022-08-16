@@ -22,6 +22,7 @@ import Dashboard from "@/views/admin/Dashboard.vue";
 import Settings from "@/views/admin/Settings.vue";
 import Tables from "@/views/admin/Tables.vue";
 import Maps from "@/views/admin/Maps.vue";
+import Rooms from "@/views/admin/RoomInfo.vue";
 
 // views for Auth layout
 
@@ -32,7 +33,7 @@ import SNSAuth from "@/views/auth/SNSAuth.vue";
 
 import Landing from "@/views/Landing.vue";
 import Profile from "@/views/Profile.vue";
-import Index from "@/views/Index.vue";
+//import Index from "@/views/Index.vue";
 import { initializeApp } from "firebase/app";
 //import firebase from "./firebase";
 import firebaseConfig from "../firebaseConfig";
@@ -62,6 +63,10 @@ const routes = [
       {
         path: "/admin/maps",
         component: Maps,
+      },
+      {
+        path: "/admin/rooms",
+        component: Rooms,
       },
     ],
   },
@@ -94,7 +99,7 @@ const routes = [
   },
   {
     path: "/",
-    component: Index,
+    component: Login,
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
