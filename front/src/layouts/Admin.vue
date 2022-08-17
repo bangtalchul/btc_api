@@ -2,8 +2,8 @@
   <div>
     <!-- <sidebar /> -->
     <index-navbar />
-   <section
-      class="header relative pt-16 flex h-screen max-h-860-px"
+      <section
+      class="header relative pt-16 items-center flex h-screen max-h-860-px"
     >
     <div class="relative md:ml-64 bg-blueGray-100">
       <admin-navbar />

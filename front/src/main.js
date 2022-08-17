@@ -33,7 +33,7 @@ import SNSAuth from "@/views/auth/SNSAuth.vue";
 
 import Landing from "@/views/Landing.vue";
 import Profile from "@/views/Profile.vue";
-//import Index from "@/views/Index.vue";
+import Index from "@/views/Index.vue";
 import { initializeApp } from "firebase/app";
 //import firebase from "./firebase";
 import firebaseConfig from "../firebaseConfig";
@@ -100,6 +100,10 @@ const routes = [
   {
     path: "/",
     component: Login,
+  },
+  {
+    path: "/index",
+    component: Index,
   },
   { path: "/:pathMatch(.*)*", redirect: "/" },
 ];

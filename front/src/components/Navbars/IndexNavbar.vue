@@ -46,7 +46,7 @@
           <li class="flex items-center">
             <index-dropdown />
           </li>
-          <li class="flex items-center">
+          <!-- <li class="flex items-center">
             <a
               class="hover:text-blueGray-500 text-blueGray-700 px-3 py-2 flex items-center text-xs uppercase font-bold"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fvue-notus%2F%23%2F"
@@ -77,15 +77,18 @@
               <i class="text-blueGray-400 fab fa-github text-lg leading-lg" />
               <span class="lg:hidden inline-block ml-2">Star</span>
             </a>
-          </li>
+          </li> -->
 
           <li class="flex items-center">
-            <button
+                  <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
+        <user-dropdown />
+      </ul>
+            <!-- <button
               class="bg-emerald-500 text-white active:bg-emerald-600 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 ease-linear transition-all duration-150"
               type="button"
             >
               <i class="fas fa-arrow-alt-circle-down"></i> Download
-            </button>
+            </button> -->
           </li>
         </ul>
       </div>
@@ -95,7 +98,7 @@
 
 <script>
 import IndexDropdown from "@/components/Dropdowns/IndexDropdown.vue";
-
+import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
 export default {
   data() {
     return {
@@ -109,6 +112,7 @@ export default {
   },
   components: {
     IndexDropdown,
+    UserDropdown
   },
 };
 </script>
