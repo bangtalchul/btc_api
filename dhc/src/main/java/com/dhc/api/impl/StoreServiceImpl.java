@@ -22,4 +22,15 @@ public class StoreServiceImpl implements StoreService {
 	public void save(storeVO store) {
 		storeDAO.save(store);
 	}
+	@Override
+	public List<storeVO> bestList() {
+		List<storeVO> list = storeDAO.findTop5AllByOrderByReviewCntDesc();
+		return list;
+	}
+	@Override
+	public List<storeVO> localList(String addr) {
+		// TODO Auto-generated method stub
+		List<storeVO> list = storeDAO.findAllByAddressContainingOrderByReviewCntDesc(addr);
+		return list;
+	}
 }

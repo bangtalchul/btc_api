@@ -23,7 +23,6 @@ public class storeVO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer storeId;
-	@Column
 	private String name;
 	private String address;
 	private String phoneNumber;
@@ -33,5 +32,7 @@ public class storeVO {
 	private Integer userId;
 	private LocalDateTime editTime;
 	private String photoUrl;
+	@Column(name = "review_cnt")
+	private int reviewCnt;
 	
 }

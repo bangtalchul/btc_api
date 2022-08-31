@@ -9,4 +9,9 @@ public interface StoreService {
 	public List<storeVO> selectAll();
 
 	public void save(storeVO board);
+	
+	public List<storeVO> bestList();
+	
+
+	public List<storeVO> localList(String addr);
 }

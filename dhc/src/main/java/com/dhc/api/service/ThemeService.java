@@ -8,5 +8,6 @@ import com.dhc.api.vo.themeVO;
 
 public interface ThemeService {
 	public List<themeVO> selectAll();
+	public List<themeVO> selectBest();
 	public void save(themeVO theme);
 }

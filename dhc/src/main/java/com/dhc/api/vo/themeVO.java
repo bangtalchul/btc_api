@@ -32,5 +32,6 @@ public class themeVO {
 	private Integer codeId;
 	private String photoUrl;
 	private Integer limit;
-	
+	@Column(name = "review_cnt")
+	private Integer reviewCnt;
 }

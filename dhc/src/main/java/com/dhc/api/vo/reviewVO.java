@@ -27,6 +27,7 @@ public class reviewVO {
 	private Integer userId;
 	private Integer rating;
 	private Integer themeId;
+	private Integer storeId;
 	private LocalDateTime createTime;
 	private LocalDateTime editTime;
 	private String status;

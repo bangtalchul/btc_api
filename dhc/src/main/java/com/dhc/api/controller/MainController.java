@@ -7,11 +7,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dhc.api.service.BoardService;
+import com.dhc.api.service.StoreService;
+import com.dhc.api.service.ThemeService;
 import com.dhc.api.vo.boardVO;
 import com.dhc.api.vo.storeVO;
+import com.dhc.api.vo.themeVO;
 
 import java.util.*;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +29,9 @@ public class MainController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private final BoardService boardService ;
+	private final StoreService storeService ;
+	private final ThemeService themeService ;
+	
 	@GetMapping(value="/board/save")
 	public ResponseEntity<HashMap<String, Object>> boardSave(){
 		HashMap<String,Object> ret = new HashMap<>();
@@ -73,4 +81,53 @@ public class MainController {
 			return new ResponseEntity<>(ret, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	@GetMapping(value="/store/best")
+	public ResponseEntity<HashMap<String, Object>> storeBest(){
+		HashMap<String,Object> ret = new HashMap<>();
+		try {
+			logger.info("store Controller");
+			ArrayList<storeVO> storeVo = new ArrayList<>();
+			storeVo.addAll(storeService.bestList());
+			ret.put("list", storeVo);
+			return new ResponseEntity<>(ret, HttpStatus.OK);
+		}
+		catch(Exception e){
+			ret.put("error",e);
+			return new ResponseEntity<>(ret, HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		}
+	}
+	
+	@GetMapping(value="/store/locate")
+	public ResponseEntity<HashMap<String, Object>> storeLocate(@RequestParam String addr){
+		HashMap<String,Object> ret = new HashMap<>();
+		try {
+			logger.info("store Controller");
+			ArrayList<storeVO> storeVo = new ArrayList<>();
+			storeVo.addAll(storeService.localList(addr));
+			ret.put("list", storeVo);
+			return new ResponseEntity<>(ret, HttpStatus.OK);
+		}
+		catch(Exception e){
+			ret.put("error",e);
+			return new ResponseEntity<>(ret, HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		}
+	}	
+	@GetMapping(value="/theme/best")
+	public ResponseEntity<HashMap<String, Object>> themeBest(){
+		HashMap<String,Object> ret = new HashMap<>();
+		try {
+			logger.info("theme Controller");
+			ArrayList<themeVO> themeVo = new ArrayList<>();
+			themeVo.addAll(themeService.selectBest());
+			ret.put("list", themeVo);
+			return new ResponseEntity<>(ret, HttpStatus.OK);
+		}
+		catch(Exception e){
+			ret.put("error",e);
+			return new ResponseEntity<>(ret, HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		}
+	}	
 }
