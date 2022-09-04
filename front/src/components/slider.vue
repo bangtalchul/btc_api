@@ -3,13 +3,18 @@
     <div class="flex justify-center">
       <div class="w-full">
         <vue-horizontal class="horizontal">
-          <div class="item" v-for="item in items" :key="item.title">
+          <div
+            class="item"
+            v-for="item in items"
+            :key="item.title"
+            v-on:click="detailRoom(item.title)"
+          >
             <div class="card">
               <div
                 class="image"
                 :style="{ background: `url(${item.image})` }"
               ></div>
-              <div class="content">
+              <div class="content bg-white">
                 <div>
                   <div class="brand">
                     <svg class="icon" viewBox="0 0 24 24">
@@ -26,7 +31,9 @@
                   <div class="title">{{ item.content }}</div>
                 </div>
 
-                <div class="date">테마정보수정</div>
+                <div class="date" v-on:click="reviseRoom(item.title)">
+                  테마정보수정
+                </div>
               </div>
             </div>
           </div>
@@ -261,6 +268,14 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    detailRoom(roompk) {
+      this.$router.push({ path: "DerailInfo", params: { room: roompk } });
+    },
+    reviseRoom(roompk) {
+      this.$router.push({ path: "AddRoom", params: { room: roompk } });
+    },
   },
 };
 </script>

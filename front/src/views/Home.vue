@@ -1,8 +1,9 @@
 <template>
-  <div class="mx-64 mt-10 place-content-start">
+  <div>
     <div class="flex justify-end mb-2">
       <button
         class="flex inline-block px-3 py-2 text-gray-700 font-medium text-sm leading-snug uppercase rounded hover:bg-gray-300 hover:shadow-lg focus:bg-gray-400 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-200 active:shadow-lg transition duration-150 ease-in-out"
+        v-on:click="addTheme()"
       >
         테마추가하기
         <svg
@@ -20,9 +21,6 @@
     <!-- <index-navbar /> -->
     <slider />
     <div class="mt-6">
-      <div class="flex juestice-start">
-        <p>예약현황</p>
-      </div>
       <card-page-visits />
     </div>
   </div>
@@ -38,6 +36,11 @@ export default {
   components: {
     Slider,
     CardPageVisits,
+  },
+  methods: {
+    addTheme() {
+      this.$router.push({ path: "AddRoom" });
+    },
   },
 };
 </script>

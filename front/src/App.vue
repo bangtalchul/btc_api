@@ -1,10 +1,12 @@
 <template>
-  <div id="app">
+  <div class="bg-gray-50" id="app">
     <header class="">
       <index-navbar />
     </header>
     <main>
-      <router-view />
+      <section class="mx-64 mt-10 place-content-start">
+        <router-view />
+      </section>
     </main>
     <!-- <div id="nav">
       <router-link to="/">Home</router-link> |
