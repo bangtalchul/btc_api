@@ -23,14 +23,15 @@ const routes = [
     path: "/rooms",
     name: "room",
     component: DetailInfo,
-    children: [
-      {
-        path: "/add",
-        name: "AddRoom",
-        component: AddRoom,
-      },
-    ],
+    children: [],
   },
+  {
+    path: "/add",
+    name: "AddRoom",
+    component: AddRoom,
+    props: true,
+  },
+
   {
     path: "/about",
     name: "About",

@@ -1,10 +1,16 @@
 <template>
-  <div class="bg-gray-50" id="app">
-    <header class="">
+  <div id="app">
+    <header>
       <index-navbar />
     </header>
     <main>
-      <section class="mx-64 mt-10 place-content-start">
+      <section v-if="componentsName == 'Login'">
+        <router-view />
+      </section>
+      <section
+        v-else-if="componentsName != 'Login'"
+        class="mx-64 mt-10 place-content-start"
+      >
         <router-view />
       </section>
     </main>
@@ -22,6 +28,11 @@ export default {
   name: "Home",
   components: {
     IndexNavbar,
+  },
+  data() {
+    return {
+      componentsName: this.$route.name,
+    };
   },
 };
 </script>

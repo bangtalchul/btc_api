@@ -39,7 +39,9 @@ export default {
   },
   methods: {
     addTheme() {
-      this.$router.push({ path: "AddRoom" });
+      this.$router.push({
+        path: "add",
+      });
     },
   },
 };

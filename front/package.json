@@ -9,6 +9,7 @@
     "build:tailwind": "npx tailwindcss -i ./src/assets/styles/index.css -o ./src/assets/styles/tailwind.css --watch"
   },
   "dependencies": {
+    "@johmun/vue-tags-input": "^2.1.0",
     "autoprefixer": "^9.8.8",
     "core-js": "^3.6.5",
     "postcss": "^7.0.39",
