@@ -29,19 +29,6 @@
         :class="[navbarOpen ? 'block' : 'hidden']"
         id="example-navbar-warning"
       >
-        <ul class="flex flex-col lg:flex-row list-none mr-auto">
-          <li class="flex items-center">
-            <a
-              class="hover:text-blueGray-500 text-blueGray-700 px-3 py-2 flex items-center text-xs uppercase font-bold"
-              href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus?ref=vn-index-navbar"
-            >
-              <i
-                class="text-blueGray-400 far fa-file-alt text-lg leading-lg mr-2"
-              />
-              Docs
-            </a>
-          </li>
-        </ul>
         <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
           <li class="flex items-center">
             <index-dropdown />
@@ -99,8 +86,9 @@
 </template>
 
 <script>
-// import IndexDropdown from "@/components/Dropdowns/IndexNavbar.vue";
-// import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
+import IndexDropdown from "@/components/Dropdowns/IndexDropdown.vue";
+import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
+
 export default {
   data() {
     return {
@@ -113,8 +101,8 @@ export default {
     },
   },
   components: {
-    // IndexDropdown,
-    // UserDropdown,
+    IndexDropdown,
+    UserDropdown,
   },
 };
 </script>

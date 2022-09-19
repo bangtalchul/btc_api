@@ -4,7 +4,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/auth/Login.vue";
 import AddRoom from "../views/rooms/AddRoom.vue";
 import DetailInfo from "../views/rooms/DetailInfo.vue";
-
+import Profile from "../components/Profile.vue";
 // import IndexNavbar from "../components/IndexNavbar.vue";
 Vue.use(VueRouter);
 
@@ -29,6 +29,12 @@ const routes = [
     path: "/add",
     name: "AddRoom",
     component: AddRoom,
+    props: true,
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
     props: true,
   },
 

@@ -4,7 +4,7 @@
       class="text-blueGray-500 block"
       href="#pablo"
       ref="btnDropdownRef"
-      v-on:click="toggleDropdown($event)"
+      v-on:click="toggleDropdown()"
     >
       <div class="items-center flex">
         <span
@@ -18,7 +18,7 @@
         </span>
       </div>
     </a>
-    <div
+    <!-- <div
       ref="popoverDropdownRef"
       class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
       v-bind:class="{
@@ -51,14 +51,14 @@
       >
         Seprated link
       </a>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-import { createPopper } from "@popperjs/core";
+//import { createPopper } from "@popperjs/core";
 
-import image from "@/assets/img/team-1-800x800.jpg";
+import image from "@/assets/team-1-800x800.jpg";
 
 export default {
   data() {
@@ -68,16 +68,19 @@ export default {
     };
   },
   methods: {
-    toggleDropdown: function (event) {
-      event.preventDefault();
-      if (this.dropdownPopoverShow) {
-        this.dropdownPopoverShow = false;
-      } else {
-        this.dropdownPopoverShow = true;
-        createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
-          placement: "bottom-start",
-        });
-      }
+    toggleDropdown: function () {
+      // event.preventDefault();
+      // if (this.dropdownPopoverShow) {
+      //   this.dropdownPopoverShow = false;
+      // } else {
+      //   this.dropdownPopoverShow = true;
+      //   createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
+      //     placement: "bottom-start",
+      //   });
+      // }
+      this.$router.push({
+        path: "profile",
+      });
     },
   },
 };

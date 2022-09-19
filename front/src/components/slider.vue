@@ -3,13 +3,8 @@
     <div class="flex justify-center">
       <div class="w-full">
         <vue-horizontal class="horizontal">
-          <div
-            class="item"
-            v-for="item in items"
-            :key="item.title"
-            v-on:click="detailRoom(item.title)"
-          >
-            <div class="card">
+          <div class="item" v-for="item in items" :key="item.title">
+            <div class="card" @click="modalOpen()">
               <div
                 class="image"
                 :style="{ background: `url(${item.image})` }"
@@ -79,7 +74,7 @@
         </vue-horizontal> -->
       </div>
     </div>
-
+    <RoomDetailModal :modal="OpenModal"></RoomDetailModal>
     <!-- <section>
       <div class="flex">
         <div class="w-2/12 flex items-center">
@@ -221,14 +216,18 @@
 // @ is an alias to /src
 // import HelloWorld from "@/components/HelloWorld.vue";
 import VueHorizontal from "vue-horizontal";
+import RoomDetailModal from "./RoomDetailModal.vue";
+
 export default {
   name: "Home",
   components: {
     // HelloWorld,
     VueHorizontal,
+    RoomDetailModal,
   },
   data() {
     return {
+      OpenModal: false,
       items: [
         {
           title: "test1",
@@ -275,6 +274,11 @@ export default {
     },
     reviseRoom(roompk) {
       this.$router.push({ path: "AddRoom", params: { room: roompk } });
+    },
+    modalOpen() {
+      // alert("aa");
+      alert("test");
+      this.OpenModal = true;
     },
   },
 };

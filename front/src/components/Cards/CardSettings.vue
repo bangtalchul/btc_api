@@ -131,11 +131,42 @@
               >
                 테마 난이도
               </label>
-              <input
-                type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-              />
+              <div class="flex justify-center">
+                <div class="px-2" v-for="index in rooms.level" :key="index">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="gold"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-12 h-12"
+                    color="#2f4f4f"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+                <div class="px-2" v-for="index in 5 - rooms.level" :key="index">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-12 h-12"
+                    color="gray"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
+              </div>
             </div>
             <div class="relative w-full mb-3">
               <label
@@ -168,7 +199,7 @@
               <input
                 type="email"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="New York"
+                value="2"
               />
             </div>
           </div>
@@ -183,7 +214,7 @@
               <input
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="United States"
+                value="5"
               />
             </div>
           </div>
@@ -193,12 +224,12 @@
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                 htmlFor="grid-password"
               >
-                Postal Code
+                제한시간
               </label>
               <input
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="Postal Code"
+                value="60m"
               />
             </div>
           </div>
@@ -247,12 +278,15 @@ export default {
     return {
       tag: "",
       tags: [],
+      rooms: {
+        level: 3,
+      },
     };
   },
 };
 </script>
 <style scoped>
 .ti-input {
-  border: 0 !important;
+  border: 0px !important;
 }
 </style>

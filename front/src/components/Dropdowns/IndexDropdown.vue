@@ -6,7 +6,7 @@
       ref="btnDropdownRef"
       v-on:click="toggleDropdown($event)"
     >
-      Demo Pages
+      서면 방탈출
     </a>
     <div
       ref="popoverDropdownRef"
