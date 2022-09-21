@@ -24,12 +24,15 @@ public class themeVO {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer themeId;
 	@Column
-	private LocalDateTime Time;
+	private LocalDateTime time;
 	private String desc;
 	private Integer level;
+	@Column(name = "store_id")
 	private Integer storeId;
 	private String status;
+	@Column(name = "code_id")
 	private Integer codeId;
+	@Column(name = "photo_url")
 	private String photoUrl;
 	private Integer limit;
 	@Column(name = "review_cnt")

@@ -26,6 +26,7 @@ public class boardVO {
 	@Column
 	private String title;
 	private String category;
+	@Column(name="user_id")
 	private String userId;
 	private String nickname;
 	private LocalDateTime createTime;
