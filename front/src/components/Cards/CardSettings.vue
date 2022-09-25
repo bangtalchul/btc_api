@@ -131,41 +131,26 @@
               >
                 테마 난이도
               </label>
-              <div class="flex justify-center">
-                <div class="px-2" v-for="index in rooms.level" :key="index">
+              <div class="flex">
+                <button
+                  type="button"
+                  v-for="i in 5"
+                  class="focus:outline-none"
+                  @click="changeStar(i)"
+                  :key="i"
+                >
                   <svg
+                    class="block h-8 w-8"
+                    :class="[rooms.level >= i ? 'text-blue' : 'text-grey']"
+                    fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="gold"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-12 h-12"
-                    color="#2f4f4f"
+                    viewBox="0 0 20 20"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                      d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"
                     />
                   </svg>
-                </div>
-                <div class="px-2" v-for="index in 5 - rooms.level" :key="index">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    class="w-12 h-12"
-                    color="gray"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
-                    />
-                  </svg>
-                </div>
+                </button>
               </div>
             </div>
             <div class="relative w-full mb-3">
@@ -175,17 +160,7 @@
               >
                 테마 태그
               </label>
-              <vue-tags-input
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                v-model="tag"
-                :tags="tags"
-                @tags-changed="(newTags) => (tags = newTags)"
-              />
-              <input
-                type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
-              />
+              <InputTag v-model="tags" @change="handleCcChange"></InputTag>
             </div>
           </div>
           <div class="w-full lg:w-4/12 px-4">
@@ -197,7 +172,7 @@
                 최소인원
               </label>
               <input
-                type="email"
+                type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                 value="2"
               />
@@ -229,12 +204,27 @@
               <input
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="60m"
+                placeholder="분단위로입력해주세요"
               />
             </div>
           </div>
         </div>
+        <div>
+          <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
+            테마예약 가능 시간
+          </h6>
+        </div>
 
+        <div>
+          <div class="flex">
+            <ScrollPicker :options="hour" v-model="timehour" />
+            <ScrollPicker :options="minute" v-model="timeminute" />
+          </div>
+        </div>
+        <div class="hover:MainYellow" @click="test()">추가</div>
+        <div>
+          <InputTag v-model="list" @change="handleCcChange" disabled></InputTag>
+        </div>
         <hr class="mt-6 border-b-1 border-blueGray-300" />
 
         <h6 class="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
@@ -269,24 +259,74 @@
   </div>
 </template>
 <script>
-import VueTagsInput from "@johmun/vue-tags-input";
+import "vue-scroll-picker/dist/style.css";
+//import StarRating from "./StarRating.vue";
+//import VueTagsInput from "@johmun/vue-tags-input";
+import InputTag from "vue-input-tag";
+import { ScrollPicker } from "vue-scroll-picker";
 export default {
   components: {
-    VueTagsInput,
+    ScrollPicker,
+    InputTag,
+    //StarRating,
+    //ScrollPickerGroup,
   },
+
   data() {
     return {
       tag: "",
       tags: [],
+      list: [],
       rooms: {
-        level: 3,
+        level: 0,
       },
+      rating: 5,
+      currentYear: new Date().getFullYear(),
+      currentMonth: 1,
+      currentDay: 1,
+      timehour: 9,
+      timeminute: 30,
     };
+  },
+  computed: {
+    years() {
+      const currYear = new Date().getFullYear();
+      const lastYear = 1980;
+      return Array.from(
+        { length: currYear - lastYear + 1 },
+        (_, index) => lastYear + index
+      ).reverse();
+    },
+    months() {
+      return Array.from({ length: 12 }, (_, index) => index + 1);
+    },
+    days() {
+      const lastDay = new Date(
+        this.currentYear,
+        this.currentMonth,
+        0
+      ).getDate();
+      return Array.from({ length: lastDay }, (_, index) => index + 1);
+    },
+    hour() {
+      return Array.from({ length: 23 }, (_, index) => index + 1);
+    },
+    minute() {
+      return Array.from({ length: 59 }, (_, index) => index + 1);
+    },
+  },
+  methods: {
+    test() {
+      this.list.push(this.timehour + ":" + this.timeminute);
+    },
+    handleCcChange(list) {
+      console.log(list);
+    },
+    changeStar(index) {
+      alert(index);
+      this.rooms.level = index;
+    },
   },
 };
 </script>
-<style scoped>
-.ti-input {
-  border: 0px !important;
-}
-</style>
+<style scoped></style>

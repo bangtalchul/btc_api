@@ -32,6 +32,7 @@ export default {
   data() {
     return {
       componentsName: this.$route.name,
+      SetStore: this.$store.SetStoreInfo,
     };
   },
 };

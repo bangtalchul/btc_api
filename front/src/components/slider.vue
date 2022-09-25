@@ -4,7 +4,7 @@
       <div class="w-full">
         <vue-horizontal class="horizontal">
           <div class="item" v-for="item in items" :key="item.title">
-            <div class="card" @click="modalOpen()">
+            <div class="card" @click="toggleModal()">
               <div
                 class="image"
                 :style="{ background: `url(${item.image})` }"
@@ -33,182 +33,93 @@
             </div>
           </div>
         </vue-horizontal>
+      </div>
+    </div>
 
-        <!-- <vue-horizontal class="horizontal">
-          <div class="item" v-for="item in items" :key="item.title">
-            <div class="card border border-gray-200 m-1 rounded-md h-80">
-              <div>
-                <img class="w-full object-cover border h-30" :src="item.image" />
-              </div>
-              <div class="text-left w-24">
-                <div class="flex">
+    <div>
+      <div
+        v-if="OpenModal"
+        class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+      >
+        <div class="relative w-auto my-6 mx-auto max-w-3xl">
+          <!--content-->
+          <div
+            class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"
+          >
+            <!--header-->
+            <div
+              class="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t"
+            >
+              <h3 class="text-xl font-semibold">모모게임</h3>
+              <div class="flex">
+                <div v-for="i in 1" :key="i">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
-                    stroke-width="1.5"
+                    strokeWidth="{1}"
                     stroke="currentColor"
-                    class="w-6 h-6"
+                    className="w-2 h-2"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
                     />
                   </svg>
-                  <div class="name ml-1">
-                    <h2 class="font-bold text-gray-600">
-                      {{ item.title }}
-                    </h2>
-                  </div>
                 </div>
-                <p class="">
-                  {{ item.content }}
-                </p>
               </div>
-  
-              <div class="date">
-                  <p>1 week ago</p></div> 
+              <button
+                class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                v-on:click="toggleModal()"
+              >
+                <span
+                  class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
+                >
+                  ×
+                </span>
+              </button>
+            </div>
+            <!--body-->
+            <div class="flex p-6">
+              <div class="w-1/3">
+                <img
+                  src="../assets/escapemain.jpg"
+                  class="object-contain h-100 w-100"
+                />
+                <div>난이도</div>
+              </div>
+              <div class="w-2/3">asdhlaksjdhfalsfkdjhl</div>
+            </div>
+            <!--footer-->
+            <div
+              class="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b"
+            >
+              <button
+                class="bg-MainViolet text-white active:bg-indigo-600 text-xs font-bold uppercase px-5 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button"
+                v-on:click="toggleModal()"
+              >
+                닫기
+              </button>
+              <button
+                class="bg-MainViolet text-white active:bg-indigo-600 text-xs font-bold uppercase px-5 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                type="button"
+                v-on:click="reviseTheme()"
+              >
+                정보수정하기
+              </button>
             </div>
           </div>
-        </vue-horizontal> -->
+        </div>
       </div>
+      <div
+        v-if="OpenModal"
+        class="opacity-25 fixed inset-0 z-40 bg-black"
+      ></div>
     </div>
+
     <RoomDetailModal :modal="OpenModal"></RoomDetailModal>
-    <!-- <section>
-      <div class="flex">
-        <div class="w-2/12 flex items-center">
-          <div class="w-full text-right">
-            <button
-              id="prev"
-              class="p-2 rounded-full border border-gray-100 shadow-lg bg-wight mr-5"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="w-5 h-5"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M13.28 3.97a.75.75 0 010 1.06L6.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0zm6 0a.75.75 0 010 1.06L12.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5a.75.75 0 010-1.06l7.5-7.5a.75.75 0 011.06 0z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <div id="sliderContainer" class="w-10/12 overflow-hidden">
-          <ul id="slider" class="flex w-full border border-red-500">
-            <li class="p-5">
-              <div class="border rounded-lg p-5 h-full">
-                <img
-                  class="h-40 w-full object-cover rounded-md border"
-                  src="../assets/logo.png"
-                />
-                <h2 class="mt-2 text-2xl font-bold text-gray-700">something1</h2>
-                <p class="mt-2 text-gray-500">asdfasdfasdfksjhkdshafljkh</p>
-              </div>
-            </li>
-            <li class="p-5">
-              <div class="border rounded-lg p-5 h-full">
-                <img
-                  class="h-40 w-full object-cover rounded-md border"
-                  src="../assets/logo.png"
-                />
-                <h2 class="mt-2 text-2xl font-bold text-gray-700">something2</h2>
-                <p class="mt-2 text-gray-500">asdfasdfasdfksjhkdshafljkh</p>
-              </div>
-            </li>
-            <li class="p-5">
-              <div class="border rounded-lg p-5 h-full">
-                <img
-                  class="h-40 w-full object-cover rounded-md border"
-                  src="../assets/logo.png"
-                />
-                <h2 class="mt-2 text-2xl font-bold text-gray-700">something3</h2>
-                <p class="mt-2 text-gray-500">asdfasdfasdfksjhkdshafljkh</p>
-              </div>
-            </li>
-            <li class="p-5">
-              <div class="border rounded-lg p-5 h-full">
-                <img
-                  class="h-40 w-full object-cover rounded-md border"
-                  src="../assets/logo.png"
-                />
-                <h2 class="mt-2 text-2xl font-bold text-gray-700">something4</h2>
-                <p class="mt-2 text-gray-500">asdfasdfasdfksjhkdshafljkh</p>
-              </div>
-            </li>
-            <li class="p-5">
-              <div class="border rounded-lg p-5 h-full">
-                <img
-                  class="h-40 w-full object-cover rounded-md border"
-                  src="../assets/logo.png"
-                />
-                <h2 class="mt-2 text-2xl font-bold text-gray-700">something5</h2>
-                <p class="mt-2 text-gray-500">asdfasdfasdfksjhkdshafljkh</p>
-              </div>
-            </li>
-            <li class="p-5">
-              <div class="border rounded-lg p-5 h-full">
-                <img
-                  class="h-40 w-full object-cover rounded-md border"
-                  src="../assets/logo.png"
-                />
-                <h2 class="mt-2 text-2xl font-bold text-gray-700">something6</h2>
-                <p class="mt-2 text-gray-500">asdfasdfasdfksjhkdshafljkh</p>
-              </div>
-            </li>
-            <li class="p-5">
-              <div class="border rounded-lg p-5 h-full">
-                <img
-                  class="h-40 w-full object-cover rounded-md border"
-                  src="../assets/logo.png"
-                />
-                <h2 class="mt-2 text-2xl font-bold text-gray-700">something7</h2>
-                <p class="mt-2 text-gray-500">asdfasdfasdfksjhkdshafljkh</p>
-              </div>
-            </li>
-            <li class="p-5">
-              <div class="border rounded-lg p-5 h-full">
-                <img
-                  class="h-40 w-full object-cover rounded-md border"
-                  src="../assets/logo.png"
-                />
-                <h2 class="mt-2 text-2xl font-bold text-gray-700">something8</h2>
-                <p class="mt-2 text-gray-500">asdfasdfasdfksjhkdshafljkh</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="w-2/12 flex items-center">
-          <div class="w-full text-left">
-            <button
-              id="next"
-              class="p-2 rounded-full border border-gray-100 shadow-lg bg-wight ml-5"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.72 3.97a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 010-1.06zm6 0a.75.75 0 011.06 0l7.5 7.5a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 11-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 010-1.06z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section> -->
-    <!-- <div class="home">
-      <img alt="Vue logo" src="../assets/logo.png" />
-      <HelloWorld msg="Welcome to Your Vue.js App" />
-    </div> -->
   </section>
 </template>
 
@@ -228,6 +139,9 @@ export default {
   data() {
     return {
       OpenModal: false,
+      room: {
+        level: 3,
+      },
       items: [
         {
           title: "test1",
@@ -256,12 +170,12 @@ export default {
           image: require("../../src/assets/logo.png"),
         },
         {
-          title: "test5",
+          title: "test6",
           content: "content test",
           image: require("../../src/assets/logo.png"),
         },
         {
-          title: "test5",
+          title: "test7",
           content: "content test",
           image: require("../../src/assets/logo.png"),
         },
@@ -275,10 +189,13 @@ export default {
     reviseRoom(roompk) {
       this.$router.push({ path: "AddRoom", params: { room: roompk } });
     },
-    modalOpen() {
-      // alert("aa");
-      alert("test");
-      this.OpenModal = true;
+    toggleModal() {
+      this.OpenModal = !this.OpenModal;
+    },
+    reviseTheme() {
+      this.$router.push({
+        path: "add",
+      });
     },
   },
 };

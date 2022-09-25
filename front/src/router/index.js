@@ -4,8 +4,10 @@ import Home from "../views/Home.vue";
 import Login from "../views/auth/Login.vue";
 import AddRoom from "../views/rooms/AddRoom.vue";
 import DetailInfo from "../views/rooms/DetailInfo.vue";
-import Profile from "../components/Profile.vue";
-// import IndexNavbar from "../components/IndexNavbar.vue";
+import NoneStoreInfo from "../components/NoneStoreInfo.vue";
+import Reservation from "../components/Reservation.vue";
+import Scheduler from "../components/Scheduler.vue";
+import StoreSetInfo from "../components/StoreSetInfo.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -32,12 +34,29 @@ const routes = [
     props: true,
   },
   {
-    path: "/profile",
-    name: "Profile",
-    component: Profile,
+    path: "/none",
+    name: "None",
+    component: NoneStoreInfo,
     props: true,
   },
-
+  {
+    path: "/reservation",
+    name: "Reservation",
+    component: Reservation,
+    props: true,
+  },
+  {
+    path: "/schedule",
+    name: "Schedule",
+    component: Scheduler,
+    props: true,
+  },
+  {
+    path: "/storeinfo",
+    name: "storeinfo",
+    component: StoreSetInfo,
+    props: true,
+  },
   {
     path: "/about",
     name: "About",

@@ -13,10 +13,11 @@
           class="relative w-full px-4 max-w-full flex-grow flex-1 text-right"
         >
           <button
-            class="bg-purple-600 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            class="bg-MainViolet text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="button"
+            v-on:click="showScheduler()"
           >
-            See all
+            전체보기
           </button>
         </div>
       </div>
@@ -49,7 +50,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="room in items" :key="room.personnal">
+          <tr
+            v-for="room in items"
+            :key="room.personnal"
+            v-on:click="detailReser()"
+          >
             <th
               class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left"
             >
@@ -86,34 +91,51 @@ export default {
           themeName: "우주선에서 탈출",
           reservater: "손수현",
           personnal: 1,
+          key: 1,
           time: 15,
         },
         {
           themeName: "우주선에서 탈출",
           reservater: "손수현",
           personnal: 2,
+          key: 1,
           time: 15,
         },
         {
           themeName: "우주선에서 탈출",
           reservater: "손수현",
           personnal: 3,
+          key: 1,
           time: 15,
         },
         {
           themeName: "우주선에서 탈출",
           reservater: "손수현",
           personnal: 4,
+          key: 1,
           time: 15,
         },
         {
           themeName: "우주선에서 탈출",
           reservater: "손수현",
           personnal: 5,
+          key: 1,
           time: 15,
         },
       ],
     };
+  },
+  methods: {
+    detailReser() {
+      this.$router.push({
+        path: "reservation",
+      });
+    },
+    showScheduler() {
+      this.$router.push({
+        path: "schedule",
+      });
+    },
   },
 };
 </script>
