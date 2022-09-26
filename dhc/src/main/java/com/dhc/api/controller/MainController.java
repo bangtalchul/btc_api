@@ -81,6 +81,19 @@ public class MainController {
 		}
 	}
 	
+	@GetMapping(value="/board")
+	public ResponseEntity<HashMap<String, Object>> myBoard(@RequestParam Integer userId){
+		HashMap<String,Object> ret = new HashMap<>();
+		try {
+			logger.info("board Controller");
+			List<boardVO> boardVo = boardService.myBoard(userId);
+			ret.put("board", boardVo);
+			return new ResponseEntity<>(ret, HttpStatus.OK);
+		} catch (Exception e) {
+			ret.put("error",e);
+			return new ResponseEntity<>(ret, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 	@GetMapping(value="/store/save")
 	public ResponseEntity<HashMap<String, Object>> storeSave(){
