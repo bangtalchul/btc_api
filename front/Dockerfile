@@ -1,5 +1,5 @@
 FROM node:lts-alpine as build-stage
-WORKDIR /frontend
+WORKDIR /front
 COPY package*.json ./
 
 RUN npm install
