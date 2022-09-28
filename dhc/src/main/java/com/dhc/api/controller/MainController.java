@@ -81,7 +81,7 @@ public class MainController {
 		}
 	}
 	
-	@GetMapping(value="/board")
+	@GetMapping(value="/board/user")
 	public ResponseEntity<HashMap<String, Object>> myBoard(@RequestParam Integer userId){
 		HashMap<String,Object> ret = new HashMap<>();
 		try {
