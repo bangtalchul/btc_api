@@ -2,14 +2,14 @@
   <section class="mt-1">
     <div class="flex justify-center">
       <div class="w-full">
-        <vue-horizontal class="horizontal">
+        <vue-horizontal class="horizontal h-62">
           <div class="item" v-for="item in items" :key="item.title">
             <div class="card" @click="toggleModal()">
               <div
                 class="image"
                 :style="{ background: `url(${item.image})` }"
               ></div>
-              <div class="content bg-white">
+              <div class="content bg-white text-left">
                 <div>
                   <div class="brand">
                     <svg class="icon" viewBox="0 0 24 24">
@@ -23,7 +23,78 @@
                     <div class="name">{{ item.title }}</div>
                   </div>
 
-                  <div class="title">{{ item.content }}</div>
+                  <div class="title">
+                    <p v-html="item.content"></p>
+                    <div class="flex">
+                      <div v-for="i in item.level" :key="i">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="gold"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-4 h-4"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                          />
+                        </svg>
+                      </div>
+                      <div v-for="i in 5 - item.level" :key="i">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-4 h-4"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <!-- <div class="flex">
+                      <div v-for="i in items.level" :key="i">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="gold"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                          />
+                        </svg>
+                      </div>
+                      <div v-for="i in 5 - items.level" :key="i">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke-width="1.5"
+                          stroke="currentColor"
+                          class="w-6 h-6"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                          />
+                        </svg>
+                      </div>
+                    </div> -->
+                  </div>
                 </div>
 
                 <div class="date" v-on:click="reviseRoom(item.title)">
@@ -144,40 +215,46 @@ export default {
       },
       items: [
         {
-          title: "test1",
-          content:
-            "content test jadlkfajdl;fjaldskfjalkdfj ad;lfkjadlkja sldkjfsldkfj ",
-          image: require("../../src/assets/escapemain.jpg"),
+          title: "주차장",
+          content: `참여인원: 2 ~ 6 <br/> 소요시간: 60분 <br/>`,
+          level: 3,
+          image: require("../../src/assets/theme1.png"),
         },
         {
-          title: "test2",
-          content: "content test",
-          image: require("../../src/assets/logo.png"),
+          title: "엘리베이터",
+          content: `참여인원: 2 ~ 6 <br/> 소요시간: 60분 <br/>`,
+          level: 4,
+          image: require("../../src/assets/theme2.png"),
         },
         {
-          title: "test3",
-          content: "content test",
-          image: require("../../src/assets/escapemain.jpg"),
+          title: "고문실",
+          content: `참여인원: 2 ~ 6 <br/> 소요시간: 60분 <br/>`,
+          level: 3,
+          image: require("../../src/assets/theme3.png"),
         },
         {
-          title: "test4",
-          content: "content test",
-          image: require("../../src/assets/logo.png"),
+          title: "공장",
+          content: `참여인원: 2 ~ 6 <br/> 소요시간: 60분 <br/>`,
+          level: 5,
+          image: require("../../src/assets/theme4.png"),
         },
         {
-          title: "test5",
-          content: "content test",
-          image: require("../../src/assets/logo.png"),
+          title: "타짜",
+          content: `참여인원: 2 ~ 6 <br/> 소요시간: 60분 <br/>`,
+          level: 3,
+          image: require("../../src/assets/theme5.jpg"),
         },
         {
           title: "test6",
-          content: "content test",
-          image: require("../../src/assets/logo.png"),
+          content: `참여인원: 2 ~ 6 <br/> 소요시간: 60분 <br/>`,
+          level: 3,
+          image: require("../../src/assets/theme1.png"),
         },
         {
           title: "test7",
-          content: "content test",
-          image: require("../../src/assets/logo.png"),
+          content: `참여인원: 2 ~ 6 <br/> 소요시간: 60분 <br/>`,
+          level: 3,
+          image: require("../../src/assets/theme2.png"),
         },
       ],
     };

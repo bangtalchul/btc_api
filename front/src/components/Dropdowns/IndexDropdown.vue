@@ -6,7 +6,7 @@
       ref="btnDropdownRef"
       v-on:click="toggleDropdown($event)"
     >
-      서면 방탈출
+      서울이스케이프룸
     </a>
     <div
       ref="popoverDropdownRef"

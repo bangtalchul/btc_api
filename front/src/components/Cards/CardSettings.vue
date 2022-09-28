@@ -6,10 +6,10 @@
       <div class="text-center flex justify-between">
         <h6 class="text-blueGray-700 text-xl font-bold">테마 추가</h6>
         <button
-          class="bg-purple-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+          class="bg-MainViolet text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
           type="button"
         >
-          Settings
+          저장하기
         </button>
       </div>
     </div>
@@ -19,89 +19,77 @@
           테마메인이미지
         </h6>
         <div class="flex">
-          <!-- <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
-              >
-                테마 이름
-              </label>
-              <input
-                type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="모모게임"
-              />
+          <div class="w-1/3 justify-center">
+            <div v-if="preview" class="pt-3 pl-8">
+              <img :src="preview" class="img-fluid object-contain h-52 w-52" />
+              <!-- <p class="mb-0">file name: {{ image.name }}</p> -->
+              <!-- <p class="mb-0">size: {{ image.size / 1024 }}KB</p> -->
             </div>
-
-            <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
-              >
-                테마 태그
-              </label>
-              <vue-tags-input
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                v-model="tag"
-                :tags="tags"
-                @tags-changed="(newTags) => (tags = newTags)"
-              />
-              <input
-                type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                placeholder="#공포 #동화"
-              />
-            </div>
-          </div> -->
-          <div class="w-full justice-center">
-            <!-- <div class="relative w-full mb-3 rounded"> -->
-            <!-- <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
-              >
-                테마 메인 이미지
-              </label> -->
-            <!-- <input
-                type="email"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="jesse@example.com"
-              />  -->
-            <div>
-              <img src="../../../src/assets/escapemain.jpg" />
-            </div>
-            <!-- </div> -->
           </div>
-          <!-- <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
-              >
-                First Name
-              </label>
-              <input
-                type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="Lucky"
-              />
+          <div class="w-2/3 justice-center">
+            <div id="app" class="container my-3">
+              <div class="row">
+                <div class="col-md-5 offset-md-1">
+                  <form>
+                    <div class="form-group">
+                      <!-- <label for="my-file">Select Image</label> -->
+
+                      <div class="flex justify-center items-center w-full">
+                        <label
+                          for="dropzone-file"
+                          class="flex flex-col justify-center items-center w-full h-52 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                        >
+                          <div
+                            class="flex flex-col justify-center items-center pt-5 pb-6"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="mb-3 w-10 h-10 text-gray-400"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                              ></path>
+                            </svg>
+                            <p
+                              class="mb-2 text-sm text-gray-500 dark:text-gray-400"
+                            >
+                              <span class="font-semibold"
+                                >파일을 올려주세요</span
+                              >
+                            </p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">
+                              SVG, PNG, JPG or GIF (MAX. 800x400px)
+                            </p>
+                          </div>
+                          <input
+                            id="dropzone-file"
+                            type="file"
+                            class="hidden"
+                            @change="previewImage"
+                          />
+                        </label>
+                      </div>
+
+                      <!-- <input
+                        type="file"
+                        accept="image/*"
+                        @change="previewImage"
+                        class="form-control-file"
+                        id="my-file"
+                      /> -->
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
-          </div> -->
-          <!-- <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
-              >
-                Last Name
-              </label>
-              <input
-                type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="Jesse"
-              />
-            </div>
-          </div> -->
+          </div>
         </div>
 
         <hr class="mt-6 border-b-1 border-blueGray-300" />
@@ -131,26 +119,39 @@
               >
                 테마 난이도
               </label>
-              <div class="flex">
-                <button
-                  type="button"
-                  v-for="i in 5"
-                  class="focus:outline-none"
-                  @click="changeStar(i)"
-                  :key="i"
-                >
+              <div class="flex justify-center">
+                <div v-for="i in 3" :key="i">
                   <svg
-                    class="block h-8 w-8"
-                    :class="[rooms.level >= i ? 'text-blue' : 'text-grey']"
-                    fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
+                    fill="gold"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-10 h-10"
                   >
                     <path
-                      d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
                     />
                   </svg>
-                </button>
+                </div>
+                <div v-for="i in 2" :key="i">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-10 h-10"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
             <div class="relative w-full mb-3">
@@ -242,7 +243,7 @@
               <textarea
                 type="text"
                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                rows="4"
+                rows="12"
               >
                 XX야 이거 너만 알려주는거야 꼭 비밀로 해야해
                 친구가 내 스마트폰에 깔아준 어떤 앱...
@@ -285,7 +286,11 @@ export default {
       currentMonth: 1,
       currentDay: 1,
       timehour: 9,
-      timeminute: 30,
+      timeminute: 0,
+      preview: null,
+      image: null,
+      preview_list: [],
+      image_list: [],
     };
   },
   computed: {
@@ -312,7 +317,15 @@ export default {
       return Array.from({ length: 23 }, (_, index) => index + 1);
     },
     minute() {
-      return Array.from({ length: 59 }, (_, index) => index + 1);
+      var m = [];
+      for (var i = 0; i < 60; i++) {
+        if (i < 10) {
+          m.push(`0${i}`);
+        } else {
+          m.push(i);
+        }
+      }
+      return m;
     },
   },
   methods: {
@@ -325,6 +338,17 @@ export default {
     changeStar(index) {
       alert(index);
       this.rooms.level = index;
+    },
+    previewImage: function (event) {
+      var input = event.target;
+      if (input.files) {
+        var reader = new FileReader();
+        reader.onload = (e) => {
+          this.preview = e.target.result;
+        };
+        this.image = input.files[0];
+        reader.readAsDataURL(input.files[0]);
+      }
     },
   },
 };

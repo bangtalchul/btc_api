@@ -176,7 +176,25 @@ export default {
   components: {},
 
   data() {
-    return {};
+    return {
+      preview: null,
+      image: null,
+      preview_list: [],
+      image_list: [],
+    };
+  },
+  methods: {
+    previewImage: function (event) {
+      var input = event.target;
+      if (input.files) {
+        var reader = new FileReader();
+        reader.onload = (e) => {
+          this.preview = e.target.result;
+        };
+        this.image = input.files[0];
+        reader.readAsDataURL(input.files[0]);
+      }
+    },
   },
 };
 </script>

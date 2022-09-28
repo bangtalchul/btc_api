@@ -58,7 +58,7 @@
 <script>
 //import { createPopper } from "@popperjs/core";
 
-import image from "@/assets/team-1-800x800.jpg";
+import image from "@/assets/store.png";
 
 export default {
   data() {

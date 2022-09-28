@@ -33,17 +33,17 @@
               테마이름
             </th>
             <th
-              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
             >
               예약자
             </th>
             <th
-              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
             >
               예약인원
             </th>
             <th
-              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
             >
               예약시간
             </th>
@@ -88,39 +88,46 @@ export default {
     return {
       items: [
         {
-          themeName: "우주선에서 탈출",
+          themeName: "고문실",
           reservater: "손수현",
-          personnal: 1,
+          personnal: 6,
           key: 1,
-          time: 15,
+          time: "2022-09-29 / 1:00 PM",
         },
         {
-          themeName: "우주선에서 탈출",
-          reservater: "손수현",
-          personnal: 2,
-          key: 1,
-          time: 15,
-        },
-        {
-          themeName: "우주선에서 탈출",
-          reservater: "손수현",
-          personnal: 3,
-          key: 1,
-          time: 15,
-        },
-        {
-          themeName: "우주선에서 탈출",
-          reservater: "손수현",
-          personnal: 4,
-          key: 1,
-          time: 15,
-        },
-        {
-          themeName: "우주선에서 탈출",
-          reservater: "손수현",
+          themeName: "엘리베이터",
+          reservater: "김수현",
           personnal: 5,
           key: 1,
-          time: 15,
+          time: "2022-09-29 / 3:00 PM",
+        },
+        {
+          themeName: "타짜",
+          reservater: "윤수빈",
+          personnal: 5,
+          key: 1,
+          time: "2022-09-29 /  5:00 PM",
+        },
+        {
+          themeName: "고문실",
+          reservater: "김정희",
+          personnal: 4,
+          key: 1,
+          time: "2022-09-29 / 7:00 PM",
+        },
+        {
+          themeName: "타짜",
+          reservater: "문영화",
+          personnal: 5,
+          key: 1,
+          time: "2022-09-29 / 7:00 PM",
+        },
+        {
+          themeName: "주차장",
+          reservater: "김수현",
+          personnal: 5,
+          key: 1,
+          time: "2022-09-29 / 8:00 PM",
         },
       ],
     };
