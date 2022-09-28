@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="text-left">
-      <p class="text-lg">예약상세</p>
+      <p class="text-lg mb-1">예약상세</p>
     </div>
     <hr style="border: 1px solid black; background-color: black" />
 
@@ -26,7 +26,7 @@
 
             <div class="pt-2 pb-2 text-left">예약자</div>
           </div>
-          <hr class="m-2" />
+          <hr class="p-2" />
 
           <div class="flex items-center mb-4">
             <img
@@ -35,7 +35,8 @@
               alt="Avatar of Jonathan Reinink"
             />
             <div class="text-sm">
-              <p class="text-gray-900 leading-none">손수현</p>
+              <p class="text-gray-900 leading-none m-1">손수현</p>
+              <p class="text-gray-900 leading-none">010-1234-5678</p>
             </div>
           </div>
         </div>
@@ -58,7 +59,7 @@
             </svg>
             <div class="pt-2 pb-2 pl-1 text-left">도전인원</div>
           </div>
-          <hr class="m-2" />
+          <hr class="p-2" />
 
           <div class="flex items-center mb-4">
             <div class="text-sm ml-4">
@@ -68,23 +69,54 @@
         </div>
 
         <div>
-          <div class="p-2 text-left">
-            예약일시
-            <hr class="m-2" />
+          <div class="flex">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5 mt-2.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <div class="p-2 text-left">예약일시</div>
           </div>
-
+          <hr class="p-2" />
           <div class="flex items-center mb-4">
             <div class="text-sm ml-4">
-              <p class="text-gray-900 leading-none">2022.09.20 16시 50분</p>
+              <p class="text-gray-900 leading-none">2022.09.29 20시 00분</p>
             </div>
           </div>
         </div>
 
         <div>
-          <div class="p-2 text-left">
-            입금확인
-            <hr class="m-2" />
+          <div class="flex">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5 mt-2.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z"
+                />
+              </svg>
+            </div>
+            <div class="p-2 text-left">입금확인</div>
           </div>
+          <hr class="p-2" />
 
           <div class="flex items-center mb-4">
             <div class="text-sm ml-4">
@@ -104,13 +136,42 @@
                   입금이완료되었습니다💸
                 </p>
                 <button
-                  class="bg-purple-600 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 ml-4 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
+                  class="bg-purple-600 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-2 ml-4 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
                   type="button"
                 >
                   입금취소
                 </button>
               </div>
             </div>
+          </div>
+
+          <div class="flex">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-5 h-5 mt-2.5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <div class="p-2 text-left">예약취소</div>
+          </div>
+          <hr class="p-2" />
+          <div class="text-left">
+            <button
+              class="bg-purple-600 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-2 ml-4 rounded outline-none focus:outline-none ease-linear transition-all duration-150"
+              type="button"
+            >
+              예약취소
+            </button>
           </div>
         </div>
       </div>
@@ -124,11 +185,11 @@
           <div class="items-center mb-4">
             <img
               class="mr-4"
-              src="../assets/escapemain.jpg"
+              src="../assets/theme1.png"
               alt="Avatar of Jonathan Reinink"
             />
             <div class="text-sm m-4">
-              <p class="text-gray-900 leading-none">모모게임</p>
+              <p class="text-gray-900 leading-none">주차장</p>
             </div>
             <div class="flex justify-center">
               <div class="px-2" v-for="index in level" :key="index">
