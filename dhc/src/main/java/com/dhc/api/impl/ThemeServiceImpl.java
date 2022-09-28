@@ -27,7 +27,7 @@ public class ThemeServiceImpl implements ThemeService {
 	@Override
 	public void save(themeVO theme) {
 		// TODO Auto-generated method stub
-		
+		themeDao.save(theme);
 	}
 	@Override
 	public List<themeVO> selectAll() {

@@ -22,4 +22,14 @@ public class BoardServiceImpl implements BoardService {
 	public void save(boardVO board) {
 		boardDAO.save(board);
 	}
+	@Override
+	public boardVO boardDetail(Integer boardId) {
+		// TODO Auto-generated method stub
+		return boardDAO.findById(boardId).get();
+	}
+	@Override
+	public List<boardVO> myBoard(Integer userId) {
+		
+		return boardDAO.findAllByUserId(userId);
+	}
 }

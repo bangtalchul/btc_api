@@ -6,11 +6,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dhc.api.dao.themeDAO;
 import com.dhc.api.service.BoardService;
 import com.dhc.api.service.StoreService;
 import com.dhc.api.service.ThemeService;
@@ -64,6 +67,33 @@ public class MainController {
 		
 		}
 	}		
+	@GetMapping(value="/board")
+	public ResponseEntity<HashMap<String, Object>> boardDetail(@RequestParam Integer boardId){
+		HashMap<String,Object> ret = new HashMap<>();
+		try {
+			logger.info("board Controller");
+			boardVO boardVo = boardService.boardDetail(boardId);
+			ret.put("board", boardVo);
+			return new ResponseEntity<>(ret, HttpStatus.OK);
+		} catch (Exception e) {
+			ret.put("error",e);
+			return new ResponseEntity<>(ret, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(value="/board/user")
+	public ResponseEntity<HashMap<String, Object>> myBoard(@RequestParam Integer userId){
+		HashMap<String,Object> ret = new HashMap<>();
+		try {
+			logger.info("board Controller");
+			List<boardVO> boardVo = boardService.myBoard(userId);
+			ret.put("board", boardVo);
+			return new ResponseEntity<>(ret, HttpStatus.OK);
+		} catch (Exception e) {
+			ret.put("error",e);
+			return new ResponseEntity<>(ret, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 	@GetMapping(value="/store/save")
 	public ResponseEntity<HashMap<String, Object>> storeSave(){
@@ -106,6 +136,30 @@ public class MainController {
 			ArrayList<storeVO> storeVo = new ArrayList<>();
 			storeVo.addAll(storeService.localList(addr));
 			ret.put("list", storeVo);
+			return new ResponseEntity<>(ret, HttpStatus.OK);
+		}
+		catch(Exception e){
+			ret.put("error",e);
+			return new ResponseEntity<>(ret, HttpStatus.INTERNAL_SERVER_ERROR);
+		
+		}
+	}
+	@PostMapping(value="/theme/save")
+	public ResponseEntity<HashMap<String, Object>> themeSave(@RequestBody themeVO theme){
+		HashMap<String,Object> ret = new HashMap<>();
+		try {
+			logger.info("theme Controller");
+			logger.info(theme.toString());
+			
+			themeVO themeVo = new themeVO();
+			themeVo.setCodeId(theme.getCodeId());
+			themeVo.setDesc("etst");
+			themeVo.setStatus("01");
+			themeVo.setPhotoUrl("01");
+			
+			System.out.println(themeVo);
+			themeService.save(themeVo);
+			ret.put("theme",themeVo);
 			return new ResponseEntity<>(ret, HttpStatus.OK);
 		}
 		catch(Exception e){
